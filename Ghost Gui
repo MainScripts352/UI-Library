@@ -2,6 +2,10 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
 ---
 
+if game.CoreGui:FindFirstChild("GhostGui") then
+   game.CoreGui:FindFirstChild("GhostGui"):Destroy()
+end
+
 local ScreenGui1 = Instance.new("ScreenGui")
 ScreenGui1.Parent = game.CoreGui
 ScreenGui1.Name = "GhostGui"
