@@ -184,7 +184,9 @@ function AddContent(type, text, script, script2)
     game:GetService("RunService").RenderStepped:Connect(function()
     if Toogle == true and BetterLoopOperator == false then
        BetterLoopOperator = true
+       pcall(function()
        loadstring(script)()
+       end)
        BetterLoopOperator = false
     end
     end)
