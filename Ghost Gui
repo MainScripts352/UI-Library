@@ -68,7 +68,7 @@ end
 end)
 
 local ContentPositionZ = 0
-local function AddContent(type, text, script, script2)
+function AddContent(type, text, script, script2)
  if text == nil then
     text = "Text"
  end
