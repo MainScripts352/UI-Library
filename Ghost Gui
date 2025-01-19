@@ -106,6 +106,7 @@ function AddContent(type, text, script, script2)
     TextLabel.TextSize = 18
     TextLabel.TextScaled = true
     TextLabel.TextWrapped = true
+    RETURN = TextLabel
  elseif type == "TextBox" then
     local TextBox = Instance.new("TextBox") 
     TextBox.Parent = Frame
