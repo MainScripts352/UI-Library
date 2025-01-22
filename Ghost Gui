@@ -15,7 +15,7 @@ Frame1.Parent = ScreenGui1
 Frame1.Name = "MainFrame"
 Frame1.BackgroundColor3 = Color3.fromRGB(17,17,17)
 Frame1.Position = UDim2.new(0.3,0,0.05)
-Frame1.Size = UDim2.new(0.225,0,0.11,0)
+Frame1.Size = UDim2.new(0,165,0,34,0)
 Frame1.Active = true
 Frame1.Draggable = true
 
