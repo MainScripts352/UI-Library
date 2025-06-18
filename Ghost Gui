@@ -136,7 +136,7 @@ function AddContent(type, text, script, script2)
     TextButton.Text = text
     TextButton.TextSize = 18
     TextButton.TextScaled = true
-    TextButton.TextWrapped = false
+    TextButton.TextWrapped = true
 
     local UICorner = Instance.new("UICorner") 
     UICorner.Parent = TextButton
@@ -157,7 +157,7 @@ function AddContent(type, text, script, script2)
     TextLabel.Text = text
     TextLabel.TextSize = 18
     TextLabel.TextScaled = true
-    TextLabel.TextWrapped = false
+    TextLabel.TextWrapped = true
 
     local TextButton = Instance.new("TextButton") 
     TextButton.Parent = Frame
@@ -207,7 +207,7 @@ function AddContent(type, text, script, script2)
     TextLabel.Text = text
     TextLabel.TextSize = 18
     TextLabel.TextScaled = true
-    TextLabel.TextWrapped = false
+    TextLabel.TextWrapped = true
 
     local ImageButton = Instance.new("ImageButton")
     ImageButton.Parent = Frame
