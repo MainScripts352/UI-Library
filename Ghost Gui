@@ -34,7 +34,7 @@ TextLabel1.TextColor3 = Color3.fromRGB(248,248,248)
 TextLabel1.Text = "Title Here"
 TextLabel1.TextSize = 18
 TextLabel1.TextScaled = true
-TextLabel1.TextWrapped = false
+TextLabel1.TextWrapped = true
 
 local Frame2 = Instance.new("Frame") 
 Frame2.Parent = Frame1
@@ -104,7 +104,7 @@ function AddContent(type, text, script, script2)
     TextLabel.TextColor3 = Color3.fromRGB(248,248,248)
     TextLabel.Text = text
     TextLabel.TextSize = 18
-    TextLabel.TextScaled = true
+    TextLabel.TextScaled = false
     TextLabel.TextWrapped = true
     RETURN = TextLabel
  elseif type == "TextBox" then
@@ -135,7 +135,7 @@ function AddContent(type, text, script, script2)
     TextButton.TextColor3 = Color3.fromRGB(248,248,248)
     TextButton.Text = text
     TextButton.TextSize = 18
-    TextButton.TextScaled = true
+    TextButton.TextScaled = false
     TextButton.TextWrapped = true
 
     local UICorner = Instance.new("UICorner") 
@@ -156,7 +156,7 @@ function AddContent(type, text, script, script2)
     TextLabel.TextXAlignment = Enum.TextXAlignment.Left
     TextLabel.Text = text
     TextLabel.TextSize = 18
-    TextLabel.TextScaled = true
+    TextLabel.TextScaled = false
     TextLabel.TextWrapped = true
 
     local TextButton = Instance.new("TextButton") 
@@ -168,8 +168,8 @@ function AddContent(type, text, script, script2)
     TextButton.TextColor3 = Color3.fromRGB(248,248,248)
     TextButton.Text = "□"
     TextButton.TextSize = 24
-    TextButton.TextScaled = true
-    TextButton.TextWrapped = false
+    TextButton.TextScaled = false
+    TextButton.TextWrapped = true
 
     local Toogle = false
     TextButton.MouseButton1Click:Connect(function()
@@ -206,7 +206,7 @@ function AddContent(type, text, script, script2)
     TextLabel.TextXAlignment = Enum.TextXAlignment.Left
     TextLabel.Text = text
     TextLabel.TextSize = 18
-    TextLabel.TextScaled = true
+    TextLabel.TextScaled = false
     TextLabel.TextWrapped = true
 
     local ImageButton = Instance.new("ImageButton")
