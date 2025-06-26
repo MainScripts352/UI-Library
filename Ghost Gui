@@ -33,7 +33,7 @@ TextLabel1.Font = Enum.Font.SourceSansBold
 TextLabel1.TextColor3 = Color3.fromRGB(248,248,248)
 TextLabel1.Text = "Title Here"
 TextLabel1.TextSize = 18
-TextLabel1.TextScaled = true
+TextLabel1.TextScaled = false
 TextLabel1.TextWrapped = true
 
 local Frame2 = Instance.new("Frame") 
