@@ -3,7 +3,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainSc
 ---
 
 if game.CoreGui:FindFirstChild("GhostGui") then
-   game.CoreGui:FindFirstChild("GhostGui"):Destroy()
+   --game.CoreGui:FindFirstChild("GhostGui"):Destroy()
 end
 
 local ScreenGui1 = Instance.new("ScreenGui")
