@@ -1,5 +1,5 @@
 if game.CoreGui:FindFirstChild("GhostGui") then
-   --game.CoreGui:FindFirstChild("GhostGui"):Destroy()
+   game.CoreGui:FindFirstChild("GhostGui"):Destroy()
 end
 
 local ScreenGui1 = Instance.new("ScreenGui")
@@ -111,6 +111,7 @@ function AddContent(type, text, script, script2)
     TextBox.Size = UDim2.new(0.8,0,0.7,0)
     TextBox.Font = Enum.Font.SourceSansBold
     TextBox.TextColor3 = Color3.fromRGB(248,248,248)
+    TextBox.PlaceholderColor3 = Color3.fromRGB(179, 179, 179)
     TextBox.PlaceholderText = text
     TextBox.Text = ""
     TextBox.TextSize = 18
