@@ -253,8 +253,8 @@ function AddContent(type, text, script, script2)
     SliderText.Parent = Slider
     
     local SliderBar = Instance.new("Frame")
-    SliderBar.Size = UDim2.new(0.9, 0, 0, 6)
-    SliderBar.Position = UDim2.new(0.05, 0, 0, 20)
+    SliderBar.Size = UDim2.new(0.8, 0, 0, 6)
+    SliderBar.Position = UDim2.new(0.1, 0, 0, 20)
     SliderBar.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
     SliderBar.BorderSizePixel = 0
     SliderBar.Parent = Slider
