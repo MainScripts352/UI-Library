@@ -232,7 +232,7 @@ function AddContent(type, text, script, script2)
 
     local Slider = Instance.new("Frame")
     Slider.Size = UDim2.new(1, 0, 1)
-    Slider.Position = UDim2.new(0, 0, 0, 0)
+    Slider.Position = UDim2.new(0, 0, 0)
     Slider.BackgroundTransparency = 1
     Slider.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     Slider.BorderSizePixel = 0
@@ -288,7 +288,6 @@ function AddContent(type, text, script, script2)
 
     local Number = Instance.new("NumberValue")
     Number.Parent = Slider
-    Number.Name = "Value"
     Number.Archivable = true
     Number.Value = curSpeed
 
@@ -335,6 +334,59 @@ function AddContent(type, text, script, script2)
     end
     end)
     RETURN = Number
+ elseif type == "Dropdown" then
+    local Frame2 = Instance.new("Frame") 
+    Frame2.Parent = Frame
+    Frame2.BackgroundColor3 = Color3.fromRGB(33,33,33)
+    Frame2.BackgroundTransparency = 1
+    Frame2.Position = UDim2.new(0,0,0)
+    Frame2.Size = UDim2.new(1,0,1)
+    
+    local TextButton = Instance.new("TextButton") 
+    TextButton.Parent = Frame
+    TextButton.BackgroundTransparency = 0
+    TextButton.BorderColor3 = Color3.fromRGB(91,93,105)
+    TextButton.BorderSizePixel = 1
+    TextButton.Position = UDim2.new(0.1,0,0.125)
+    TextButton.Size = UDim2.new(0.8,0,0.7,0)
+    TextButton.Font = Enum.Font.SourceSansBold
+    TextButton.TextColor3 = Color3.fromRGB(248,248,248)
+    TextButton.Text = text
+    TextButton.TextSize = 18
+    TextButton.TextScaled = false
+    TextButton.TextWrapped = true
+
+    local String = Instance.new("StringValue")
+    String.Parent = Frame
+    String.Archivable = true
+    String.Value = text
+
+    local Button_PosZ = 0
+    local function AddButton(title)
+     local Button = TextButton:Clone()
+     Button.Parent = Frame2
+     Button.Position = UDim2.new(0.91, 1, Button_PosZ)
+     Button.Text = title
+     Button.ZIndex = 100
+     Button.MouseButton1Click:Connect(function()
+     TextButton.Text = Button.Text
+     String.Value = Button.Text
+     Frame2:ClearAllChildren()
+     end)
+     Button_PosZ += 0.74
+    end
+
+    TextButton.MouseButton1Click:Connect(function()
+    if #Frame2:GetChildren() > 0 then
+       Frame2:ClearAllChildren()
+       return
+    end
+    Button_PosZ = 0.125
+    for i = 1, #script do
+      AddButton(script[i])
+    end
+    end)
+    RETURN = String
  end
  ContentPositionZ += 9.3
  if RETURN ~= nil then
