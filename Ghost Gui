@@ -225,6 +225,116 @@ function AddContent(type, text, script, script2)
        loadstring(script2)()
     end
     end)
+ elseif type == "Slidebar" then
+    local curSpeed = script[2]
+    local minSpeed = script[1]
+    local maxSpeed = script[3]
+
+    local Slider = Instance.new("Frame")
+    Slider.Size = UDim2.new(1, 0, 1)
+    Slider.Position = UDim2.new(0, 0, 0, 0)
+    Slider.BackgroundTransparency = 1
+    Slider.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    Slider.BorderSizePixel = 0
+    Slider.Parent = Frame
+
+    local SliderCorner = Instance.new("UICorner")
+    SliderCorner.CornerRadius = UDim.new(0, 6)
+    SliderCorner.Parent = Slider
+
+    local SliderText = Instance.new("TextLabel")
+    SliderText.Size = UDim2.new(1, 0, 0, 20)
+    SliderText.Position = UDim2.new(0, 0, 0, 0)
+    SliderText.BackgroundTransparency = 1
+    SliderText.Text = text..": "..curSpeed
+    SliderText.TextColor3 = Color3.fromRGB(200, 200, 200)
+    SliderText.Font = Enum.Font.Gotham
+    SliderText.TextSize = 12
+    SliderText.Parent = Slider
+    
+    local SliderBar = Instance.new("Frame")
+    SliderBar.Size = UDim2.new(0.9, 0, 0, 6)
+    SliderBar.Position = UDim2.new(0.05, 0, 0, 20)
+    SliderBar.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+    SliderBar.BorderSizePixel = 0
+    SliderBar.Parent = Slider
+
+    local BarCorner = Instance.new("UICorner")
+    BarCorner.CornerRadius = UDim.new(0, 3)
+    BarCorner.Parent = SliderBar
+
+    local SliderFill = Instance.new("Frame")
+    SliderFill.Size = UDim2.new((curSpeed - minSpeed) / (maxSpeed - minSpeed), 0, 1, 0)
+    SliderFill.Position = UDim2.new(0, 0, 0, 0)
+    SliderFill.BackgroundColor3 = Color3.fromRGB(248, 248, 248)
+    SliderFill.BorderSizePixel = 0
+    SliderFill.Parent = SliderBar
+
+    local FillCorner = Instance.new("UICorner")
+    FillCorner.CornerRadius = UDim.new(0, 3)
+    FillCorner.Parent = SliderFill
+
+    local SliderButton = Instance.new("TextButton")
+    SliderButton.Size = UDim2.new(0, 15, 0, 15)
+    SliderButton.Position = UDim2.new((curSpeed - minSpeed) / (maxSpeed - minSpeed), -7.5, 1, -10)
+    SliderButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+    SliderButton.BorderSizePixel = 0
+    SliderButton.Text = ""
+    SliderButton.Parent = SliderBar
+
+    local SliderButtonCorner = Instance.new("UICorner")
+    SliderButtonCorner.CornerRadius = UDim.new(0, 10)
+    SliderButtonCorner.Parent = SliderButton
+
+    local Number = Instance.new("NumberValue")
+    Number.Parent = Slider
+    Number.Name = "Value"
+    Number.Archivable = true
+    Number.Value = curSpeed
+
+    local sliding = false
+    local function updateSlider(input)
+     if sliding then
+        local sliderAbsolutePosition = SliderBar.AbsolutePosition
+        local sliderAbsoluteSize = SliderBar.AbsoluteSize
+        local touchPosition
+        if input.UserInputType == Enum.UserInputType.Touch then
+           touchPosition = input.Position
+        else
+           touchPosition = UserInputService:GetMouseLocation()
+        end     
+        local relativeX = (touchPosition.X - sliderAbsolutePosition.X) / sliderAbsoluteSize.X
+        relativeX = math.clamp(relativeX, 0, 1)       
+        SliderButton.Position = UDim2.new(relativeX, -7.5, 1, -10)
+        SliderFill.Size = UDim2.new(relativeX, 0, 1, 0)      
+        curSpeed = math.floor(minSpeed + (maxSpeed - minSpeed) * relativeX)
+        SliderText.Text = text..": "..curSpeed
+        Number.Value = curSpeed
+     end
+    end
+
+    SliderButton.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
+       sliding = true
+    end
+    end)
+    SliderBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch then
+       sliding = true
+       updateSlider(input)
+    end
+    end)
+    game:GetService("UserInputService").InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
+       sliding = false
+    end
+    end)
+    game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if sliding and (input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement) then
+       updateSlider(input)
+    end
+    end)
+    RETURN = Number
  end
  ContentPositionZ += 9.3
  if RETURN ~= nil then
